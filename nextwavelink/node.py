@@ -113,8 +113,8 @@ class Node:
     retries: int | None
         A ``int`` of retries to attempt when connecting or reconnecting this Node. When the retries are exhausted
         the Node will be closed and cleaned-up. ``None`` will retry forever. Defaults to ``None``.
-    client: :class:`discord.Client` | None
-        The :class:`discord.Client` or subclasses, E.g. ``commands.Bot`` used to connect this Node. If this is *not*
+    client: :class:`nextcord.Client` | None
+        The :class:`nextcord.Client` or subclasses, E.g. ``commands.Bot`` used to connect this Node. If this is *not*
         passed you must pass this to :meth:`wavelink.Pool.connect`.
     resume_timeout: Optional[int]
         The seconds this Node should configure Lavalink for resuming its current session in case of network issues.
@@ -130,7 +130,7 @@ class Node:
         session: aiohttp.ClientSession | None = None,
         heartbeat: float = 15.0,
         retries: int | None = None,
-        client: discord.Client | None = None,
+        client: nextcord.Client | None = None,
         resume_timeout: int = 60,
     ) -> None:
         self._identifier = identifier or secrets.token_urlsafe(12)
@@ -207,7 +207,7 @@ class Node:
 
     @property
     def players(self) -> dict[int, Player]:
-        """A mapping of :attr:`discord.Guild.id` to :class:`~wavelink.Player`.
+        """A mapping of :attr:`nextcord.Guild.id` to :class:`~wavelink.Player`.
 
 
         .. versionchanged:: 3.1.1
@@ -217,8 +217,8 @@ class Node:
         return self._players.copy()
 
     @property
-    def client(self) -> discord.Client | None:
-        """Returns the :class:`discord.Client` associated with this :class:`Node`.
+    def client(self) -> nextcord.Client | None:
+        """Returns the :class:`nextcord.Client` associated with this :class:`Node`.
 
         Could be ``None`` if it has not been set yet.
 
@@ -290,11 +290,11 @@ class Node:
         if self.client is not None:
             self.client.dispatch("wavelink_node_closed", self, disconnected)
 
-    async def _connect(self, *, client: discord.Client | None) -> None:
+    async def _connect(self, *, client: nextcord.Client | None) -> None:
         client_ = self._client or client
 
         if not client_:
-            raise InvalidClientException(f"Unable to connect {self!r} as you have not provided a valid discord.Client.")
+            raise InvalidClientException(f"Unable to connect {self!r} as you have not provided a valid nextcord.Client.")
 
         self._client = client_
 
@@ -684,12 +684,12 @@ class Node:
         return data
 
     def get_player(self, guild_id: int, /) -> Player | None:
-        """Return a :class:`~wavelink.Player` associated with the provided :attr:`discord.Guild.id`.
+        """Return a :class:`~wavelink.Player` associated with the provided :attr:`nextcord.Guild.id`.
 
         Parameters
         ----------
         guild_id: int
-            The :attr:`discord.Guild.id` to retrieve a :class:`~wavelink.Player` for.
+            The :attr:`nextcord.Guild.id` to retrieve a :class:`~wavelink.Player` for.
 
         Returns
         -------
@@ -715,7 +715,7 @@ class Pool:
 
     @classmethod
     async def connect(
-        cls, *, nodes: Iterable[Node], client: discord.Client | None = None, cache_capacity: int | None = None
+        cls, *, nodes: Iterable[Node], client: nextcord.Client | None = None, cache_capacity: int | None = None
     ) -> dict[str, Node]:
         """Connect the provided Iterable[:class:`Node`] to Lavalink.
 
@@ -723,8 +723,8 @@ class Pool:
         ----------
         nodes: Iterable[:class:`Node`]
             The :class:`Node`'s to connect to Lavalink.
-        client: :class:`discord.Client` | None
-            The :class:`discord.Client` to use to connect the :class:`Node`. If the Node already has a client
+        client: :class:`nextcord.Client` | None
+            The :class:`nextcord.Client` to use to connect the :class:`Node`. If the Node already has a client
             set, this method will **not** override it. Defaults to None.
         cache_capacity: int | None
             An optional integer of the amount of track searches to cache. This is an experimental mode.
@@ -741,7 +741,7 @@ class Pool:
         AuthorizationFailedException
             The node password was incorrect.
         InvalidClientException
-            The :class:`discord.Client` passed was not valid.
+            The :class:`nextcord.Client` passed was not valid.
         NodeException
             The node failed to connect properly. Please check that your Lavalink version is version 4.
 

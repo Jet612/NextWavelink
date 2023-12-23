@@ -110,7 +110,7 @@ intersphinx_mapping = {
 
 extlinks = {
     "wlissue": ("https://github.com/PythonistaGuild/Wavelink/issues/%s", "GH-%s"),
-    "ddocs": ("https://discord.com/developers/docs/%s", None),
+    "ddocs": ("https://nextcord.com/developers/docs/%s", None),
 }
 
 
