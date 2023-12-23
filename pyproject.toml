@@ -6,10 +6,10 @@ build-backend = "setuptools.build_meta"
 name = "nextwavelink"
 version = "3.2.0"
 authors = [
-  { name="PythonistaGuild, EvieePy", email="evieepy@gmail.com" },
+  { name="PythonistaGuild, EvieePy, Jet612", email="jetflyer1130@gmail.com" },
 ]
 dynamic = ["dependencies"]
-description = "A robust and powerful, fully asynchronous Lavalink wrapper built for [nextcord] in Python."
+description = "A robust and powerful, fully asynchronous Lavalink wrapper built for discord.py [nextcord] in Python."
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
@@ -27,7 +27,7 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/PythonistaGuild/NextWavelink"
+"Homepage" = "https://github.com/Jet612/NextWavelink"
 
 [tool.setuptools]
 packages = ["nextwavelink", "nextwavelink.types"]
