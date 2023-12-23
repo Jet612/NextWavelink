@@ -30,8 +30,8 @@ from collections.abc import Iterable
 from typing import TYPE_CHECKING, Any, Literal, TypeAlias
 
 import aiohttp
-import discord
-from discord.utils import classproperty
+import nextcord
+from nextcord.utils import classproperty
 
 from . import __version__
 from .enums import NodeStatus

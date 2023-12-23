@@ -31,9 +31,9 @@ from collections import deque
 from typing import TYPE_CHECKING, Any, TypeAlias
 
 import async_timeout
-import discord
-from discord.abc import Connectable
-from discord.utils import MISSING
+import nextcord
+from nextcord.abc import Connectable
+from nextcord.utils import MISSING
 
 import wavelink
 
@@ -52,8 +52,8 @@ from .queue import Queue
 from .tracks import Playable, Playlist
 
 if TYPE_CHECKING:
-    from discord.types.voice import GuildVoiceState as GuildVoiceStatePayload
-    from discord.types.voice import VoiceServerUpdate as VoiceServerUpdatePayload
+    from nextcord.types.voice import GuildVoiceState as GuildVoiceStatePayload
+    from nextcord.types.voice import VoiceServerUpdate as VoiceServerUpdatePayload
     from typing_extensions import Self
 
     from .node import Node

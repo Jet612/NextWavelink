@@ -28,7 +28,7 @@ from typing import TYPE_CHECKING, cast
 
 import wavelink
 
-from .enums import DiscordVoiceCloseType
+from .enums import nextcordVoiceCloseType
 from .filters import Filters
 from .tracks import Playable
 

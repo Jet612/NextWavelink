@@ -25,8 +25,8 @@ import asyncio
 import logging
 from typing import cast
 
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 
 import wavelink
 
