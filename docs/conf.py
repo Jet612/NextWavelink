@@ -26,13 +26,13 @@ sys.path.insert(0, os.path.abspath(".."))
 sys.path.append(os.path.abspath("extensions"))
 
 on_rtd = os.environ.get("READTHEDOCS") == "True"
-project = "Wavelink"
+project = "NextNextWavelink"
 copyright = "2023, PythonistaGuild, EvieePy"
 author = "PythonistaGuild, EvieePy"
 
 # The full version, including alpha/beta/rc tags
 release = ""
-with open("../wavelink/__init__.py") as f:
+with open("../nextwavelink/__init__.py") as f:
     release = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)  # type: ignore
 
 version = release
@@ -109,7 +109,7 @@ intersphinx_mapping = {
 }
 
 extlinks = {
-    "wlissue": ("https://github.com/PythonistaGuild/Wavelink/issues/%s", "GH-%s"),
+    "wlissue": ("https://github.com/PythonistaGuild/NextWavelink/issues/%s", "GH-%s"),
     "ddocs": ("https://nextcord.com/developers/docs/%s", None),
 }
 

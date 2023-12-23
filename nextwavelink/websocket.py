@@ -65,7 +65,7 @@ class Websocket:
         data = {
             "Authorization": self.node.password,
             "User-Id": str(self.node.client.user.id),
-            "Client-Name": f"Wavelink/{__version__}",
+            "Client-Name": f"NextWavelink/{__version__}",
         }
 
         if self.node.session_id:
@@ -101,7 +101,7 @@ class Websocket:
         session: aiohttp.ClientSession = self.node._session
         heartbeat: float = self.node.heartbeat
         uri: str = f"{self.node.uri.removesuffix('/')}/v4/websocket"
-        github: str = "https://github.com/PythonistaGuild/Wavelink/issues"
+        github: str = "https://github.com/PythonistaGuild/NextWavelink/issues"
 
         while True:
             try:
@@ -116,7 +116,7 @@ class Websocket:
                 else:
                     logger.warning(
                         f'An unexpected error occurred while connecting {self.node!r} to Lavalink: "{e}"\n'
-                        f"If this error persists or wavelink is unable to reconnect, please see: {github}"
+                        f"If this error persists or nextwavelink is unable to reconnect, please see: {github}"
                     )
 
             if self.is_connected():

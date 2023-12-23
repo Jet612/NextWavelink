@@ -119,7 +119,7 @@ class _Queue:
 
 
 class Queue(_Queue):
-    """The default custom wavelink Queue designed specifically for :class:`wavelink.Player`.
+    """The default custom nextwavelink Queue designed specifically for :class:`nextwavelink.Player`.
 
     .. container:: operations
 
@@ -158,7 +158,7 @@ class Queue(_Queue):
 
     Attributes
     ----------
-    history: :class:`wavelink.Queue`
+    history: :class:`nextwavelink.Queue`
         A queue of tracks that have been added to history.
 
         Even though the history queue is the same class as this Queue some differences apply.
@@ -216,7 +216,7 @@ class Queue(_Queue):
 
         Returns
         -------
-        :class:`wavelink.Playable`
+        :class:`nextwavelink.Playable`
             The track retrieved from the queue.
 
 
@@ -228,14 +228,14 @@ class Queue(_Queue):
         return self._get()
 
     async def get_wait(self) -> Playable:
-        """This method returns the first :class:`wavelink.Playable` if one is present or
+        """This method returns the first :class:`nextwavelink.Playable` if one is present or
         waits indefinitely until one is.
 
         This method is asynchronous.
 
         Returns
         -------
-        :class:`wavelink.Playable`
+        :class:`nextwavelink.Playable`
             The track retrieved from the queue.
 
         """
@@ -265,11 +265,11 @@ class Queue(_Queue):
     def put(self, item: Playable | Playlist, /, *, atomic: bool = True) -> int:
         """Put an item into the end of the queue.
 
-        Accepts a :class:`wavelink.Playable` or :class:`wavelink.Playlist`
+        Accepts a :class:`nextwavelink.Playable` or :class:`nextwavelink.Playlist`
 
         Parameters
         ----------
-        item: :class:`wavelink.Playable` | :class:`wavelink.Playlist`
+        item: :class:`nextwavelink.Playable` | :class:`nextwavelink.Playlist`
             The item to enter into the queue.
         atomic: bool
             Whether the items should be inserted atomically. If set to ``True`` this method won't enter any tracks if
@@ -289,7 +289,7 @@ class Queue(_Queue):
     async def put_wait(self, item: list[Playable] | Playable | Playlist, /, *, atomic: bool = True) -> int:
         """Put an item or items into the end of the queue asynchronously.
 
-        Accepts a :class:`wavelink.Playable` or :class:`wavelink.Playlist` or list[:class:`wavelink.Playable`]
+        Accepts a :class:`nextwavelink.Playable` or :class:`nextwavelink.Playlist` or list[:class:`nextwavelink.Playable`]
 
         .. note::
 
@@ -297,7 +297,7 @@ class Queue(_Queue):
 
         Parameters
         ----------
-        item: :class:`wavelink.Playable` | :class:`wavelink.Playlist` | list[:class:`wavelink.Playable`]
+        item: :class:`nextwavelink.Playable` | :class:`nextwavelink.Playlist` | list[:class:`nextwavelink.Playable`]
             The item or items to enter into the queue.
         atomic: bool
             Whether the items should be inserted atomically. If set to ``True`` this method won't enter any tracks if
@@ -388,10 +388,10 @@ class Queue(_Queue):
 
     @property
     def mode(self) -> QueueMode:
-        """Property which returns a :class:`~wavelink.QueueMode` indicating which mode the
-        :class:`~wavelink.Queue` is in.
+        """Property which returns a :class:`~nextwavelink.QueueMode` indicating which mode the
+        :class:`~nextwavelink.Queue` is in.
 
-        This property can be set with any :class:`~wavelink.QueueMode`.
+        This property can be set with any :class:`~nextwavelink.QueueMode`.
 
         .. versionadded:: 3.0.0
         """

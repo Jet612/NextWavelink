@@ -27,10 +27,10 @@ from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any
 
-from .exceptions import WavelinkException
+from .exceptions import NextWavelinkException
 
 
-class CapacityZero(WavelinkException):
+class CapacityZero(NextWavelinkException):
     ...
 
 

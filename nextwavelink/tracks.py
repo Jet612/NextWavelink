@@ -88,7 +88,7 @@ class Artist:
 
 
 class Playable:
-    """The Wavelink Playable object which represents all tracks in Wavelink 3.
+    """The NextWavelink Playable object which represents all tracks in NextWavelink 3.
 
     .. note::
 
@@ -242,7 +242,7 @@ class Playable:
 
     @property
     def playlist(self) -> PlaylistInfo | None:
-        """Property returning a :class:`wavelink.PlaylistInfo`. Could be ``None``
+        """Property returning a :class:`nextwavelink.PlaylistInfo`. Could be ``None``
         if this track is not a part of a playlist.
         """
         return self._playlist
@@ -254,14 +254,14 @@ class Playable:
 
     @property
     def extras(self) -> ExtrasNamespace:
-        """Property returning a :class:`~wavelink.ExtrasNamespace` of extras for this :class:`Playable`.
+        """Property returning a :class:`~nextwavelink.ExtrasNamespace` of extras for this :class:`Playable`.
 
         You can set this property with a :class:`dict` of valid :class:`str` keys to any valid ``JSON`` value,
-        or a :class:`~wavelink.ExtrasNamespace`.
+        or a :class:`~nextwavelink.ExtrasNamespace`.
 
-        If a dict is passed, it will be converted into an :class:`~wavelink.ExtrasNamespace`,
+        If a dict is passed, it will be converted into an :class:`~nextwavelink.ExtrasNamespace`,
         which can be converted back to a dict with dict(...). Additionally, you can also use list or tuple on
-        :class:`~wavelink.ExtrasNamespace`.
+        :class:`~nextwavelink.ExtrasNamespace`.
 
         The extras dict will be sent to Lavalink as the ``userData`` field.
 
@@ -276,7 +276,7 @@ class Playable:
 
             .. code:: python
 
-                track: wavelink.Playable = wavelink.Playable.search("QUERY")
+                track: nextwavelink.Playable = nextwavelink.Playable.search("QUERY")
                 track.extras = {"requester_id": 1234567890}
 
                 # later...
@@ -312,7 +312,7 @@ class Playable:
                 old_data = track.raw_data
 
                 # Later...
-                track: wavelink.Playable = wavelink.Playable(old_data)
+                track: nextwavelink.Playable = nextwavelink.Playable(old_data)
 
 
         .. versionadded:: 3.2.0
@@ -321,17 +321,17 @@ class Playable:
 
     @classmethod
     async def search(cls, query: str, /, *, source: TrackSource | str | None = TrackSource.YouTubeMusic) -> Search:
-        """Search for a list of :class:`~wavelink.Playable` or a :class:`~wavelink.Playlist`, with the given query.
+        """Search for a list of :class:`~nextwavelink.Playable` or a :class:`~nextwavelink.Playlist`, with the given query.
 
         .. note::
 
-            This method differs from :meth:`wavelink.Pool.fetch_tracks` in that it will apply a relevant search prefix
+            This method differs from :meth:`nextwavelink.Pool.fetch_tracks` in that it will apply a relevant search prefix
             for you when a URL is **not** provided. This prefix can be controlled via the ``source`` keyword argument.
 
 
         .. note::
 
-            This method of searching is preferred over, :meth:`wavelink.Pool.fetch_tracks`.
+            This method of searching is preferred over, :meth:`nextwavelink.Pool.fetch_tracks`.
 
 
         Parameters
@@ -347,16 +347,16 @@ class Playable:
             If ``None`` is provided, no prefix will be used, however this behaviour is default regardless of what
             is provided **when a URL is found**.
 
-            For basic searches, E.g. YouTube, YouTubeMusic and SoundCloud, see: :class:`wavelink.TrackSource`.
+            For basic searches, E.g. YouTube, YouTubeMusic and SoundCloud, see: :class:`nextwavelink.TrackSource`.
             Otherwise, a ``str`` may be provided for plugin based searches, E.g. "spsearch:" for the
             LavaSrc Spotify based search.
 
-            Defaults to :attr:`wavelink.TrackSource.YouTubeMusic` which is equivalent to "ytmsearch:".
+            Defaults to :attr:`nextwavelink.TrackSource.YouTubeMusic` which is equivalent to "ytmsearch:".
 
 
         Returns
         -------
-        :class:`wavelink.Search`
+        :class:`nextwavelink.Search`
             A union of either list[:class:`Playable`] or :class:`Playlist`. Could return and empty list,
             if no tracks or playlist were found.
 
@@ -372,26 +372,26 @@ class Playable:
         .. code:: python3
 
             # Search for tracks, with the default "ytsearch:" prefix.
-            tracks: wavelink.Search = await wavelink.Playable.search("Ocean Drive")
+            tracks: nextwavelink.Search = await nextwavelink.Playable.search("Ocean Drive")
             if not tracks:
                 # No tracks were found...
                 ...
 
             # Search for tracks, with a URL.
-            tracks: wavelink.Search = await wavelink.Playable.search("https://www.youtube.com/watch?v=KDxJlW6cxRk")
+            tracks: nextwavelink.Search = await nextwavelink.Playable.search("https://www.youtube.com/watch?v=KDxJlW6cxRk")
             ...
 
             # Search for tracks, using Spotify and the LavaSrc Plugin.
-            tracks: wavelink.Search = await wavelink.Playable.search("4b93D55xv3YCH5mT4p6HPn", source="spsearch")
+            tracks: nextwavelink.Search = await nextwavelink.Playable.search("4b93D55xv3YCH5mT4p6HPn", source="spsearch")
             ...
 
             # Search for tracks, using Spotify and the LavaSrc Plugin, with a URL.
-            tracks: wavelink.Search = await wavelink.Playable.search("https://open.spotify.com/track/4b93D55xv3YCH5mT4p6HPn")
+            tracks: nextwavelink.Search = await nextwavelink.Playable.search("https://open.spotify.com/track/4b93D55xv3YCH5mT4p6HPn")
             ...
 
             # Search for a playlist, using Spotify and the LavaSrc Plugin.
             # or alternatively any other playlist URL from another source like YouTube.
-            tracks: wavelink.Search = await wavelink.Playable.search("https://open.spotify.com/playlist/37i9dQZF1DWXRqgorJj26U")
+            tracks: nextwavelink.Search = await nextwavelink.Playable.search("https://open.spotify.com/playlist/37i9dQZF1DWXRqgorJj26U")
             ...
 
 
@@ -400,8 +400,8 @@ class Playable:
             This method has been changed significantly in version ``3.0.0``. This method has been simplified to provide
             an easier interface for searching tracks. See the above documentation and examples.
 
-            You can no longer provide a :class:`wavelink.Node` to use for searching as this method will now select the
-            most appropriate node from the :class:`wavelink.Pool`.
+            You can no longer provide a :class:`nextwavelink.Node` to use for searching as this method will now select the
+            most appropriate node from the :class:`nextwavelink.Pool`.
         """
         prefix: TrackSource | str | None = _source_mapping.get(source, source)
         check = yarl.URL(query)
@@ -421,18 +421,18 @@ class Playable:
 
 
 class Playlist:
-    """The wavelink Playlist container class.
+    """The nextwavelink Playlist container class.
 
-    This class is created and returned via both :meth:`Playable.search` and :meth:`wavelink.Pool.fetch_tracks`.
+    This class is created and returned via both :meth:`Playable.search` and :meth:`nextwavelink.Pool.fetch_tracks`.
 
     It contains various information about the playlist and a list of :class:`Playable` that can be used directly in
-    :meth:`wavelink.Player.play`. See below for various supported operations.
+    :meth:`nextwavelink.Player.play`. See below for various supported operations.
 
 
     .. warning::
 
         You should not instantiate this class manually,
-        use :meth:`Playable.search` or :meth:`wavelink.Pool.fetch_tracks` instead.
+        use :meth:`Playable.search` or :meth:`nextwavelink.Pool.fetch_tracks` instead.
 
 
     .. warning::
@@ -442,8 +442,8 @@ class Playlist:
 
     .. note::
 
-        This class can be directly added to :class:`wavelink.Queue` identical to :class:`Playable`. When added,
-        all tracks contained in this playlist, will be individually added to the :class:`wavelink.Queue`.
+        This class can be directly added to :class:`nextwavelink.Queue` identical to :class:`Playable`. When added,
+        all tracks contained in this playlist, will be individually added to the :class:`nextwavelink.Queue`.
 
 
     .. container:: operations
@@ -577,7 +577,7 @@ class Playlist:
 
                 playlist.track_extras(requester=ctx.author)
 
-                track: wavelink.Playable = playlist[0]
+                track: nextwavelink.Playable = playlist[0]
                 print(track.requester)
         """
         for track in self.tracks:
@@ -586,12 +586,12 @@ class Playlist:
 
 
 class PlaylistInfo:
-    """The wavelink PlaylistInfo container class.
+    """The nextwavelink PlaylistInfo container class.
 
     It contains various information about the playlist but **does not** contain the tracks associated with this
     playlist.
 
-    This class is used to provided information about the original :class:`wavelink.Playlist` on tracks.
+    This class is used to provided information about the original :class:`nextwavelink.Playlist` on tracks.
 
     Attributes
     ----------

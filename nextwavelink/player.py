@@ -304,21 +304,21 @@ class Player(nextcord.VoiceProtocol):
 
     @property
     def autoplay(self) -> AutoPlayMode:
-        """A property which returns the :class:`wavelink.AutoPlayMode` the player is currently in.
+        """A property which returns the :class:`nextwavelink.AutoPlayMode` the player is currently in.
 
-        This property can be set with any :class:`wavelink.AutoPlayMode` enum value.
+        This property can be set with any :class:`nextwavelink.AutoPlayMode` enum value.
 
 
         .. versionchanged:: 3.0.0
 
-            This property now accepts and returns a :class:`wavelink.AutoPlayMode` enum value.
+            This property now accepts and returns a :class:`nextwavelink.AutoPlayMode` enum value.
         """
         return self._autoplay
 
     @autoplay.setter
     def autoplay(self, value: Any) -> None:
         if not isinstance(value, AutoPlayMode):
-            raise ValueError("Please provide a valid 'wavelink.AutoPlayMode' to set.")
+            raise ValueError("Please provide a valid 'nextwavelink.AutoPlayMode' to set.")
 
         self._autoplay = value
 
@@ -353,7 +353,7 @@ class Player(nextcord.VoiceProtocol):
 
     @property
     def current(self) -> Playable | None:
-        """Returns the currently playing :class:`~wavelink.Playable` or None if no track is playing."""
+        """Returns the currently playing :class:`~nextwavelink.Playable` or None if no track is playing."""
         return self._current
 
     @property
@@ -366,9 +366,9 @@ class Player(nextcord.VoiceProtocol):
 
     @property
     def filters(self) -> Filters:
-        """Property which returns the :class:`~wavelink.Filters` currently assigned to the Player.
+        """Property which returns the :class:`~nextwavelink.Filters` currently assigned to the Player.
 
-        See: :meth:`~wavelink.Player.set_filters` for setting the players filters.
+        See: :meth:`~nextwavelink.Player.set_filters` for setting the players filters.
 
         .. versionchanged:: 3.0.0
 
@@ -409,11 +409,11 @@ class Player(nextcord.VoiceProtocol):
 
     @property
     def position(self) -> int:
-        """Returns the position of the currently playing :class:`~wavelink.Playable` in milliseconds.
+        """Returns the position of the currently playing :class:`~nextwavelink.Playable` in milliseconds.
 
         This property relies on information updates from Lavalink.
 
-        In cases there is no :class:`~wavelink.Playable` loaded or the player is not connected,
+        In cases there is no :class:`~nextwavelink.Playable` loaded or the player is not connected,
         this property will return ``0``.
 
         This property will return ``0`` if no update has been received from Lavalink.
@@ -497,7 +497,7 @@ class Player(nextcord.VoiceProtocol):
             Do not use this method directly on the player. See: :meth:`nextcord.VoiceChannel.connect` for more details.
 
 
-        Pass the :class:`wavelink.Player` to ``cls=`` in :meth:`nextcord.VoiceChannel.connect`.
+        Pass the :class:`nextwavelink.Player` to ``cls=`` in :meth:`nextcord.VoiceChannel.connect`.
 
 
         Raises
@@ -594,11 +594,11 @@ class Player(nextcord.VoiceProtocol):
         add_history: bool = True,
         filters: Filters | None = None,
     ) -> Playable:
-        """Play the provided :class:`~wavelink.Playable`.
+        """Play the provided :class:`~nextwavelink.Playable`.
 
         Parameters
         ----------
-        track: :class:`~wavelink.Playable`
+        track: :class:`~nextwavelink.Playable`
             The track to being playing.
         replace: bool
             Whether this track should replace the currently playing track, if there is one. Defaults to ``True``.
@@ -619,17 +619,17 @@ class Player(nextcord.VoiceProtocol):
             of the player. Defaults to ``None``.
         add_history: Optional[bool]
             If this argument is set to ``True``, the :class:`~Player` will add this track into the
-            :class:`wavelink.Queue` history, if loading the track was successful. If ``False`` this track will not be
+            :class:`nextwavelink.Queue` history, if loading the track was successful. If ``False`` this track will not be
             added to your history. This does not directly affect the ``AutoPlay Queue`` but will alter how ``AutoPlay``
             recommends songs in the future. Defaults to ``True``.
-        filters: Optional[:class:`~wavelink.Filters`]
-            An Optional[:class:`~wavelink.Filters`] to apply when playing this track. Defaults to ``None``.
+        filters: Optional[:class:`~nextwavelink.Filters`]
+            An Optional[:class:`~nextwavelink.Filters`] to apply when playing this track. Defaults to ``None``.
             If this is ``None`` the currently set filters on the player will be applied.
 
 
         Returns
         -------
-        :class:`~wavelink.Playable`
+        :class:`~nextwavelink.Playable`
             The track that began playing.
 
 
@@ -736,11 +736,11 @@ class Player(nextcord.VoiceProtocol):
         await self.node._update_player(self.guild.id, data=request)
 
     async def set_filters(self, filters: Filters | None = None, /, *, seek: bool = False) -> None:
-        """Set the :class:`wavelink.Filters` on the player.
+        """Set the :class:`nextwavelink.Filters` on the player.
 
         Parameters
         ----------
-        filters: Optional[:class:`~wavelink.Filters`]
+        filters: Optional[:class:`~nextwavelink.Filters`]
             The filters to set on the player. Could be ```None`` to reset the currently applied filters.
             Defaults to ``None``.
         seek: bool
@@ -751,7 +751,7 @@ class Player(nextcord.VoiceProtocol):
         .. versionchanged:: 3.0.0
 
             This method now accepts a positional-only argument of filters, which now defaults to None. Filters
-            were redesigned in this version, see: :class:`wavelink.Filters`.
+            were redesigned in this version, see: :class:`nextwavelink.Filters`.
 
 
         .. versionchanged:: 3.0.0
@@ -795,7 +795,7 @@ class Player(nextcord.VoiceProtocol):
         self._volume = vol
 
     async def disconnect(self, **kwargs: Any) -> None:
-        """Disconnect the player from the current voice channel and remove it from the :class:`~wavelink.Node`.
+        """Disconnect the player from the current voice channel and remove it from the :class:`~nextwavelink.Node`.
 
         This method will cause any playing track to stop and potentially trigger the following events:
 
@@ -830,19 +830,19 @@ class Player(nextcord.VoiceProtocol):
         Parameters
         ----------
         force: bool
-            Whether the track should skip looping, if :class:`wavelink.Queue` has been set to loop.
+            Whether the track should skip looping, if :class:`nextwavelink.Queue` has been set to loop.
             Defaults to ``True``.
 
         Returns
         -------
-        :class:`~wavelink.Playable` | None
+        :class:`~nextwavelink.Playable` | None
             The currently playing track that was skipped, or ``None`` if no track was playing.
 
 
         .. versionchanged:: 3.0.0
 
             This method was previously known as ``stop``. To avoid confusion this method is now known as ``skip``.
-            This method now returns the :class:`~wavelink.Playable` that was skipped.
+            This method now returns the :class:`~nextwavelink.Playable` that was skipped.
         """
         assert self.guild is not None
         old: Playable | None = self._current

@@ -5,8 +5,8 @@ import sys
 
 import nextwavelink
 
-parser = argparse.ArgumentParser(prog="wavelink")
-parser.add_argument("--version", action="store_true", help="Get version and debug information for wavelink.")
+parser = argparse.ArgumentParser(prog="nextwavelink")
+parser.add_argument("--version", action="store_true", help="Get version and debug information for nextwavelink.")
 
 
 args = parser.parse_args()
@@ -18,7 +18,7 @@ def get_debug_info() -> None:
     java_version = f'\n{" " * 8}- '.join(v for v in java_version.decode().split("\r\n") if v)
 
     info: str = f"""
-    wavelink: {nextwavelink.__version__}
+    nextwavelink: {nextwavelink.__version__}
     
     Python:
         - {python_info}

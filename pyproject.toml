@@ -27,16 +27,16 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/PythonistaGuild/Wavelink"
+"Homepage" = "https://github.com/PythonistaGuild/NextWavelink"
 
 [tool.setuptools]
-packages = ["wavelink", "wavelink.types"]
+packages = ["nextwavelink", "nextwavelink.types"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 
 [tool.setuptools.package-data]
-wavelink = ["py.typed"]
+nextwavelink = ["py.typed"]
 
 [tool.black]
 line-length = 120

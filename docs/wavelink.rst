@@ -1,16 +1,16 @@
-.. currentmodule:: wavelink
+.. currentmodule:: nextwavelink
 
 
 API Reference
 -------------
-The wavelink 3 API Reference.
-This section outlines the API and all it's components within wavelink.
+The nextwavelink 3 API Reference.
+This section outlines the API and all it's components within nextwavelink.
 
 
 Event Reference
 ---------------
 
-WaveLink Events are events dispatched when certain events happen in Lavalink and Wavelink.
+WaveLink Events are events dispatched when certain events happen in Lavalink and NextWavelink.
 All events must be coroutines.
 
 Events are dispatched via nextcord and as such can be used with nextcord listener syntax.
@@ -24,26 +24,26 @@ An event listener in a cog.
 .. code-block:: python3
 
     @commands.Cog.listener()
-    async def on_wavelink_node_ready(self, payload: wavelink.NodeReadyEventPayload) -> None:
+    async def on_wavelink_node_ready(self, payload: nextwavelink.NodeReadyEventPayload) -> None:
         print(f"Node {payload.node!r} is ready!")
 
 
-.. function:: on_wavelink_node_ready(payload: wavelink.NodeReadyEventPayload)
+.. function:: on_wavelink_node_ready(payload: nextwavelink.NodeReadyEventPayload)
 
     Called when the Node you are connecting to has initialised and successfully connected to Lavalink.
-    This event can be called many times throughout your bots lifetime, as it will be called when Wavelink successfully
+    This event can be called many times throughout your bots lifetime, as it will be called when NextWavelink successfully
     reconnects to your node in the event of a disconnect.
 
-.. function:: on_wavelink_stats_update(payload: wavelink.StatsEventPayload)
+.. function:: on_wavelink_stats_update(payload: nextwavelink.StatsEventPayload)
 
     Called when the ``stats`` OP is received by Lavalink.
 
-.. function:: on_wavelink_player_update(payload: wavelink.PlayerUpdateEventPayload)
+.. function:: on_wavelink_player_update(payload: nextwavelink.PlayerUpdateEventPayload)
 
     Called when the ``playerUpdate`` OP is received from Lavalink.
     This event contains information about a specific connected player on the node.
 
-.. function:: on_wavelink_track_start(payload: wavelink.TrackStartEventPayload)
+.. function:: on_wavelink_track_start(payload: nextwavelink.TrackStartEventPayload)
 
     Called when a track starts playing.
 
@@ -51,7 +51,7 @@ An event listener in a cog.
 
         It is preferred to use this method when sending feedback about the now playing track etc.
 
-.. function:: on_wavelink_track_end(payload: wavelink.TrackEndEventPayload)
+.. function:: on_wavelink_track_end(payload: nextwavelink.TrackEndEventPayload)
 
     Called when the current track has finished playing.
 
@@ -60,24 +60,24 @@ An event listener in a cog.
         If you are using AutoPlay, please make sure you take this into consideration when using this event.
         See: :func:`on_wavelink_track_start` for an event for performing logic when a new track starts playing.
 
-.. function:: on_wavelink_track_exception(payload: wavelink.TrackExceptionEventPayload)
+.. function:: on_wavelink_track_exception(payload: nextwavelink.TrackExceptionEventPayload)
 
     Called when an exception occurs while playing a track.
 
-.. function:: on_wavelink_track_stuck(payload: wavelink.TrackStuckEventPayload)
+.. function:: on_wavelink_track_stuck(payload: nextwavelink.TrackStuckEventPayload)
 
     Called when a track gets stuck while playing.
 
-.. function:: on_wavelink_websocket_closed(payload: wavelink.WebsocketClosedEventPayload)
+.. function:: on_wavelink_websocket_closed(payload: nextwavelink.WebsocketClosedEventPayload)
 
     Called when the websocket to the voice server is closed.
 
-.. function:: on_wavelink_node_closed(node: wavelink.Node, disconnected: list[wavelink.Player])
+.. function:: on_wavelink_node_closed(node: nextwavelink.Node, disconnected: list[nextwavelink.Player])
 
     Called when a node has been closed and cleaned-up. The second parameter ``disconnected`` is a list of
-    :class:`wavelink.Player` that were connected on this Node and are now disconnected.
+    :class:`nextwavelink.Player` that were connected on this Node and are now disconnected.
 
-.. function:: on_wavelink_extra_event(payload: wavelink.ExtraEventPayload)
+.. function:: on_wavelink_extra_event(payload: nextwavelink.ExtraEventPayload)
 
     Called when an ``Unknown`` and/or ``Unhandled`` event is recevied via Lavalink. This is most likely due to
     a plugin like SponsorBlock sending custom event data. The payload includes the raw data sent from Lavalink.
@@ -102,7 +102,7 @@ Types
 
     .. code:: python3
 
-        tracks: wavelink.Search = await wavelink.Playable.search("Ocean Drive")
+        tracks: nextwavelink.Search = await nextwavelink.Playable.search("Ocean Drive")
 
 
 Payloads
@@ -254,7 +254,7 @@ Node
 Tracks
 ------
 
-Tracks in wavelink 3 have been simplified. Please read the docs for :class:`Playable`.
+Tracks in nextwavelink 3 have been simplified. Please read the docs for :class:`Playable`.
 Additionally the following data classes are provided on every :class:`Playable`.
 
 .. attributetable:: Artist
@@ -378,7 +378,7 @@ Exceptions
 
 .. exception_hierarchy::
 
-    - :exc:`~WavelinkException`
+    - :exc:`~NextWavelinkException`
         - :exc:`~NodeException`
         - :exc:`~InvalidClientException`
         - :exc:`~AuthorizationFailedException`
@@ -390,10 +390,10 @@ Exceptions
         - :exc:`~QueueEmpty`
 
 
-.. py:exception:: WavelinkException
+.. py:exception:: NextWavelinkException
 
-    Base wavelink Exception class.
-    All wavelink exceptions derive from this exception.
+    Base nextwavelink Exception class.
+    All nextwavelink exceptions derive from this exception.
 
 .. py:exception:: NodeException
 
@@ -402,11 +402,11 @@ Exceptions
 .. py:exception:: InvalidClientException
 
     Exception raised when an invalid :class:`nextcord.Client`
-    is provided while connecting a :class:`wavelink.Node`.
+    is provided while connecting a :class:`nextwavelink.Node`.
 
 .. py:exception:: AuthorizationFailedException
 
-    Exception raised when Lavalink fails to authenticate a :class:`~wavelink.Node`, with the provided password.
+    Exception raised when Lavalink fails to authenticate a :class:`~nextwavelink.Node`, with the provided password.
 
 .. py:exception:: InvalidNodeException
 
@@ -430,7 +430,7 @@ Exceptions
 
 .. py:exception:: InvalidChannelStateException
 
-    Exception raised when a :class:`~wavelink.Player` tries to connect to an invalid channel or
+    Exception raised when a :class:`~nextwavelink.Player` tries to connect to an invalid channel or
     has invalid permissions to use this channel.
 
 .. py:exception:: ChannelTimeoutException

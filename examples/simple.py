@@ -49,7 +49,7 @@ class Bot(commands.Bot):
         logging.info(f"Logged in: {self.user} | {self.user.id}")
 
     async def on_wavelink_node_ready(self, payload: nextwavelink.NodeReadyEventPayload) -> None:
-        logging.info(f"Wavelink Node connected: {payload.node!r} | Resumed: {payload.resumed}")
+        logging.info(f"NextWavelink Node connected: {payload.node!r} | Resumed: {payload.resumed}")
 
     async def on_wavelink_track_start(self, payload: nextwavelink.TrackStartEventPayload) -> None:
         player: nextwavelink.Player | None = payload.player

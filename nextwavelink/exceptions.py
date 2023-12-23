@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 
 
 __all__ = (
-    "WavelinkException",
+    "NextWavelinkException",
     "NodeException",
     "InvalidClientException",
     "AuthorizationFailedException",
@@ -43,14 +43,14 @@ __all__ = (
 )
 
 
-class WavelinkException(Exception):
-    """Base wavelink Exception class.
+class NextWavelinkException(Exception):
+    """Base nextwavelink Exception class.
 
-    All wavelink exceptions derive from this exception.
+    All nextwavelink exceptions derive from this exception.
     """
 
 
-class NodeException(WavelinkException):
+class NodeException(NextWavelinkException):
     """Error raised when an Unknown or Generic error occurs on a Node.
 
     This exception may be raised when an error occurs reaching your Node.
@@ -67,23 +67,23 @@ class NodeException(WavelinkException):
         self.status = status
 
 
-class InvalidClientException(WavelinkException):
+class InvalidClientException(NextWavelinkException):
     """Exception raised when an invalid :class:`nextcord.Client`
-    is provided while connecting a :class:`wavelink.Node`.
+    is provided while connecting a :class:`nextwavelink.Node`.
     """
 
 
-class AuthorizationFailedException(WavelinkException):
-    """Exception raised when Lavalink fails to authenticate a :class:`~wavelink.Node`, with the provided password."""
+class AuthorizationFailedException(NextWavelinkException):
+    """Exception raised when Lavalink fails to authenticate a :class:`~nextwavelink.Node`, with the provided password."""
 
 
-class InvalidNodeException(WavelinkException):
+class InvalidNodeException(NextWavelinkException):
     """Exception raised when a :class:`Node` is tried to be retrieved from the
     :class:`Pool` without existing, or the ``Pool`` is empty.
     """
 
 
-class LavalinkException(WavelinkException):
+class LavalinkException(NextWavelinkException):
     """Exception raised when Lavalink returns an invalid response.
 
     Attributes
@@ -107,7 +107,7 @@ class LavalinkException(WavelinkException):
         super().__init__(msg)
 
 
-class LavalinkLoadException(WavelinkException):
+class LavalinkLoadException(NextWavelinkException):
     """Exception raised when an error occurred loading tracks via Lavalink.
 
     Attributes
@@ -131,15 +131,15 @@ class LavalinkLoadException(WavelinkException):
         super().__init__(msg)
 
 
-class InvalidChannelStateException(WavelinkException):
-    """Exception raised when a :class:`~wavelink.Player` tries to connect to an invalid channel or
+class InvalidChannelStateException(NextWavelinkException):
+    """Exception raised when a :class:`~nextwavelink.Player` tries to connect to an invalid channel or
     has invalid permissions to use this channel.
     """
 
 
-class ChannelTimeoutException(WavelinkException):
+class ChannelTimeoutException(NextWavelinkException):
     """Exception raised when connecting to a voice channel times out."""
 
 
-class QueueEmpty(WavelinkException):
+class QueueEmpty(NextWavelinkException):
     """Exception raised when you try to retrieve from an empty queue."""

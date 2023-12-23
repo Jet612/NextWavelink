@@ -71,7 +71,7 @@ class NodeReadyEventPayload:
 
     Attributes
     ----------
-    node: :class:`~wavelink.Node`
+    node: :class:`~nextwavelink.Node`
         The node that has connected or reconnected.
     resumed: bool
         Whether this node was successfully resumed.
@@ -90,12 +90,12 @@ class TrackStartEventPayload:
 
     Attributes
     ----------
-    player: :class:`~wavelink.Player` | None
+    player: :class:`~nextwavelink.Player` | None
         The player associated with this event. Could be None.
-    track: :class:`~wavelink.Playable`
+    track: :class:`~nextwavelink.Playable`
         The track received from Lavalink regarding this event.
-    original: :class:`~wavelink.Playable` | None
-        The original track associated this event. E.g. the track that was passed to :meth:`~wavelink.Player.play` or
+    original: :class:`~nextwavelink.Playable` | None
+        The original track associated this event. E.g. the track that was passed to :meth:`~nextwavelink.Player.play` or
         inserted into the queue, with all your additional attributes assigned. Could be ``None``.
     """
 
@@ -113,14 +113,14 @@ class TrackEndEventPayload:
 
     Attributes
     ----------
-    player: :class:`~wavelink.Player` | None
+    player: :class:`~nextwavelink.Player` | None
         The player associated with this event. Could be None.
-    track: :class:`~wavelink.Playable`
+    track: :class:`~nextwavelink.Playable`
         The track received from Lavalink regarding this event.
     reason: str
         The reason Lavalink ended this track.
-    original: :class:`~wavelink.Playable` | None
-        The original track associated this event. E.g. the track that was passed to :meth:`~wavelink.Player.play` or
+    original: :class:`~nextwavelink.Playable` | None
+        The original track associated this event. E.g. the track that was passed to :meth:`~nextwavelink.Player.play` or
         inserted into the queue, with all your additional attributes assigned. Could be ``None``.
     """
 
@@ -139,9 +139,9 @@ class TrackExceptionEventPayload:
 
     Attributes
     ----------
-    player: :class:`~wavelink.Player` | None
+    player: :class:`~nextwavelink.Player` | None
         The player associated with this event. Could be None.
-    track: :class:`~wavelink.Playable`
+    track: :class:`~nextwavelink.Playable`
         The track received from Lavalink regarding this event.
     exception: TrackExceptionPayload
         The exception data received via Lavalink.
@@ -158,9 +158,9 @@ class TrackStuckEventPayload:
 
     Attributes
     ----------
-    player: :class:`~wavelink.Player` | None
+    player: :class:`~nextwavelink.Player` | None
         The player associated with this event. Could be None.
-    track: :class:`~wavelink.Playable`
+    track: :class:`~nextwavelink.Playable`
         The track received from Lavalink regarding this event.
     threshold: int
         The Lavalink threshold associated with this event.
@@ -177,9 +177,9 @@ class WebsocketClosedEventPayload:
 
     Attributes
     ----------
-    player: :class:`~wavelink.Player` | None
+    player: :class:`~nextwavelink.Player` | None
         The player associated with this event. Could be None.
-    code: :class:`wavelink.DiscordVoiceCloseType`
+    code: :class:`nextwavelink.DiscordVoiceCloseType`
         The close code enum value.
     reason: str
         The reason the websocket was closed.
@@ -199,7 +199,7 @@ class PlayerUpdateEventPayload:
 
     Attributes
     ----------
-    player: :class:`~wavelink.Player` | None
+    player: :class:`~nextwavelink.Player` | None
         The player associated with this event. Could be None.
     time: int
         Unix timestamp in milliseconds, when this event fired.
@@ -290,12 +290,12 @@ class StatsEventPayload:
         The amount of players playing a track.
     uptime: int
         The uptime of the node in milliseconds.
-    memory: :class:`wavelink.StatsEventMemory`
-        See Also: :class:`wavelink.StatsEventMemory`
-    cpu: :class:`wavelink.StatsEventCPU`
-        See Also: :class:`wavelink.StatsEventCPU`
-    frames: :class:`wavelink.StatsEventFrames` | None
-        See Also: :class:`wavelink.StatsEventFrames`. This could be ``None``.
+    memory: :class:`nextwavelink.StatsEventMemory`
+        See Also: :class:`nextwavelink.StatsEventMemory`
+    cpu: :class:`nextwavelink.StatsEventCPU`
+        See Also: :class:`nextwavelink.StatsEventCPU`
+    frames: :class:`nextwavelink.StatsEventFrames` | None
+        See Also: :class:`nextwavelink.StatsEventFrames`. This could be ``None``.
     """
 
     def __init__(self, data: StatsOP) -> None:
@@ -312,7 +312,7 @@ class StatsEventPayload:
 
 
 class StatsResponsePayload:
-    """Payload received when using :meth:`~wavelink.Node.fetch_stats`
+    """Payload received when using :meth:`~nextwavelink.Node.fetch_stats`
 
     Attributes
     ----------
@@ -322,12 +322,12 @@ class StatsResponsePayload:
         The amount of players playing a track.
     uptime: int
         The uptime of the node in milliseconds.
-    memory: :class:`wavelink.StatsEventMemory`
-        See Also: :class:`wavelink.StatsEventMemory`
-    cpu: :class:`wavelink.StatsEventCPU`
-        See Also: :class:`wavelink.StatsEventCPU`
-    frames: :class:`wavelink.StatsEventFrames` | None
-        See Also: :class:`wavelink.StatsEventFrames`. This could be ``None``.
+    memory: :class:`nextwavelink.StatsEventMemory`
+        See Also: :class:`nextwavelink.StatsEventMemory`
+    cpu: :class:`nextwavelink.StatsEventCPU`
+        See Also: :class:`nextwavelink.StatsEventCPU`
+    frames: :class:`nextwavelink.StatsEventFrames` | None
+        See Also: :class:`nextwavelink.StatsEventFrames`. This could be ``None``.
     """
 
     def __init__(self, data: StatsResponse) -> None:
@@ -344,8 +344,8 @@ class StatsResponsePayload:
 
 
 class PlayerStatePayload:
-    """Represents the PlayerState information received via :meth:`~wavelink.Node.fetch_player_info` or
-    :meth:`~wavelink.Node.fetch_players`
+    """Represents the PlayerState information received via :meth:`~nextwavelink.Node.fetch_player_info` or
+    :meth:`~nextwavelink.Node.fetch_players`
 
     Attributes
     ----------
@@ -367,8 +367,8 @@ class PlayerStatePayload:
 
 
 class VoiceStatePayload:
-    """Represents the VoiceState information received via :meth:`~wavelink.Node.fetch_player_info` or
-    :meth:`~wavelink.Node.fetch_players`. This is the voice state information received via Discord and sent to your
+    """Represents the VoiceState information received via :meth:`~nextwavelink.Node.fetch_player_info` or
+    :meth:`~nextwavelink.Node.fetch_players`. This is the voice state information received via Discord and sent to your
     Lavalink node.
 
     Attributes
@@ -388,24 +388,24 @@ class VoiceStatePayload:
 
 
 class PlayerResponsePayload:
-    """Payload received when using :meth:`~wavelink.Node.fetch_player_info` or :meth:`~wavelink.Node.fetch_players`
+    """Payload received when using :meth:`~nextwavelink.Node.fetch_player_info` or :meth:`~nextwavelink.Node.fetch_players`
 
     Attributes
     ----------
     guild_id: int
         The guild ID as an int that this player is connected to.
-    track: :class:`wavelink.Playable` | None
+    track: :class:`nextwavelink.Playable` | None
         The current track playing on Lavalink. Could be ``None`` if no track is playing.
     volume: int
         The current volume of the player.
     paused: bool
         A bool indicating whether the player is paused.
-    state: :class:`wavelink.PlayerStatePayload`
-        The current state of the player. See: :class:`wavelink.PlayerStatePayload`.
-    voice_state: :class:`wavelink.VoiceStatePayload`
-        The voice state infomration received via Discord and sent to Lavalink. See: :class:`wavelink.VoiceStatePayload`.
-    filters: :class:`wavelink.Filters`
-        The :class:`wavelink.Filters` currently associated with this player.
+    state: :class:`nextwavelink.PlayerStatePayload`
+        The current state of the player. See: :class:`nextwavelink.PlayerStatePayload`.
+    voice_state: :class:`nextwavelink.VoiceStatePayload`
+        The voice state infomration received via Discord and sent to Lavalink. See: :class:`nextwavelink.VoiceStatePayload`.
+    filters: :class:`nextwavelink.Filters`
+        The :class:`nextwavelink.Filters` currently associated with this player.
     """
 
     def __init__(self, data: PlayerResponse) -> None:
@@ -423,7 +423,7 @@ class PlayerResponsePayload:
 
 
 class GitResponsePayload:
-    """Represents Git information received via :meth:`wavelink.Node.fetch_info`
+    """Represents Git information received via :meth:`nextwavelink.Node.fetch_info`
 
     Attributes
     ----------
@@ -444,7 +444,7 @@ class GitResponsePayload:
 
 
 class VersionResponsePayload:
-    """Represents Version information received via :meth:`wavelink.Node.fetch_info`
+    """Represents Version information received via :meth:`nextwavelink.Node.fetch_info`
 
     Attributes
     ----------
@@ -472,7 +472,7 @@ class VersionResponsePayload:
 
 
 class PluginResponsePayload:
-    """Represents Plugin information received via :meth:`wavelink.Node.fetch_info`
+    """Represents Plugin information received via :meth:`nextwavelink.Node.fetch_info`
 
     Attributes
     ----------
@@ -488,7 +488,7 @@ class PluginResponsePayload:
 
 
 class InfoResponsePayload:
-    """Payload received when using :meth:`~wavelink.Node.fetch_info`
+    """Payload received when using :meth:`~nextwavelink.Node.fetch_info`
 
     Attributes
     ----------
@@ -536,9 +536,9 @@ class ExtraEventPayload:
 
     Attributes
     ----------
-    node: :class:`~wavelink.Node`
+    node: :class:`~nextwavelink.Node`
         The node that the event pertains to.
-    player: :class:`~wavelink.Player` | None
+    player: :class:`~nextwavelink.Player` | None
         The player associated with this event. Could be None.
     data: dict[str, Any]
         The raw data sent from Lavalink for this event.

@@ -131,7 +131,7 @@ class AutoPlayMode(enum.Enum):
 
 
 class QueueMode(enum.Enum):
-    """Enum representing the various modes on :class:`wavelink.Queue`
+    """Enum representing the various modes on :class:`nextwavelink.Queue`
 
     Attributes
     ----------

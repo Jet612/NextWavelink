@@ -7,13 +7,13 @@ You can download the latest version of Python `here <https://www.python.org/down
 
 .. code:: sh
 
-    py -3.10 -m pip install -U wavelink
+    py -3.10 -m pip install -U nextwavelink
 
 **Linux:**
 
 .. code:: sh
 
-    python3.10 -m pip install -U wavelink
+    python3.10 -m pip install -U nextwavelink
 
 
 Debugging
