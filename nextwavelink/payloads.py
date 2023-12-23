@@ -26,9 +26,9 @@ from __future__ import annotations
 import datetime
 from typing import TYPE_CHECKING, cast
 
-import wavelink
+import nextwavelink
 
-from .enums import nextcordVoiceCloseType
+from .enums import DiscordVoiceCloseType
 from .filters import Filters
 from .tracks import Playable
 
@@ -148,7 +148,7 @@ class TrackExceptionEventPayload:
     """
 
     def __init__(self, player: Player | None, track: Playable, exception: TrackExceptionPayload) -> None:
-        self.player = cast(wavelink.Player, player)
+        self.player = cast(nextwavelink.Player, player)
         self.track = track
         self.exception = exception
 
@@ -167,7 +167,7 @@ class TrackStuckEventPayload:
     """
 
     def __init__(self, player: Player | None, track: Playable, threshold: int) -> None:
-        self.player = cast(wavelink.Player, player)
+        self.player = cast(nextwavelink.Player, player)
         self.track = track
         self.threshold = threshold
 
@@ -212,7 +212,7 @@ class PlayerUpdateEventPayload:
     """
 
     def __init__(self, player: Player | None, state: PlayerState) -> None:
-        self.player = cast(wavelink.Player, player)
+        self.player = cast(nextwavelink.Player, player)
         self.time: int = state["time"]
         self.position: int = state["position"]
         self.connected: bool = state["connected"]

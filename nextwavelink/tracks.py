@@ -28,7 +28,7 @@ from typing import TYPE_CHECKING, Any, TypeAlias, overload
 
 import yarl
 
-import wavelink
+import nextwavelink
 
 from .enums import TrackSource
 from .utils import ExtrasNamespace
@@ -407,7 +407,7 @@ class Playable:
         check = yarl.URL(query)
 
         if check.host:
-            tracks: Search = await wavelink.Pool.fetch_tracks(query)
+            tracks: Search = await nextwavelink.Pool.fetch_tracks(query)
             return tracks
 
         if not prefix:
@@ -416,7 +416,7 @@ class Playable:
             assert not isinstance(prefix, TrackSource)
             term: str = f"{prefix.removesuffix(':')}:{query}"
 
-        tracks: Search = await wavelink.Pool.fetch_tracks(term)
+        tracks: Search = await nextwavelink.Pool.fetch_tracks(term)
         return tracks
 
 

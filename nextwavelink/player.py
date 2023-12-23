@@ -35,7 +35,7 @@ import nextcord
 from nextcord.abc import Connectable
 from nextcord.utils import MISSING
 
-import wavelink
+import nextwavelink
 
 from .enums import AutoPlayMode, NodeStatus, QueueMode
 from .exceptions import (
@@ -255,7 +255,7 @@ class Player(discord.VoiceProtocol):
                 return []
 
             try:
-                search: wavelink.Search = await Pool.fetch_tracks(query)
+                search: nextwavelink.Search = await Pool.fetch_tracks(query)
             except (LavalinkLoadException, LavalinkException):
                 return []
 
